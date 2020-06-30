@@ -51,6 +51,8 @@
   </dependencies>
 
   <build>
+    <finalName>animal-sniffer</finalName>
+
     <plugins>
       <plugin>
         <artifactId>maven-jar-plugin</artifactId>
@@ -61,6 +63,28 @@
             </manifest>
           </archive>
         </configuration>
+      </plugin>
+
+      <plugin>
+        <artifactId>maven-assembly-plugin</artifactId>
+        <executions>
+          <execution>
+            <goals>
+              <goal>single</goal>
+            </goals>
+            <phase>package</phase>
+            <configuration>
+              <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+              </descriptorRefs>
+              <archive>
+                <manifest>
+                  <mainClass>org.codehaus.mojo.animal_sniffer.enhanced.EnhancedSigChecker</mainClass>
+                </manifest>
+              </archive>
+            </configuration>
+          </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
